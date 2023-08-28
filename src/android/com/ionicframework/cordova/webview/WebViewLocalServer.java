@@ -599,6 +599,14 @@ public class WebViewLocalServer {
     }
 
     @Override
+    public void close() throws IOException {
+      if (is != null) {
+        is.close();
+      }
+      super.close();
+    }
+
+    @Override
     public int read() throws IOException {
       InputStream is = getInputStream();
       return (is != null) ? is.read() : -1;
@@ -631,6 +639,14 @@ public class WebViewLocalServer {
     public LollipopLazyInputStream(PathHandler handler, Uri uri) {
       super(handler);
       this.uri = uri;
+    }
+
+    @Override
+    public void close() throws IOException {
+      if (is != null) {
+        is.close();
+      }
+      super.close();
     }
 
     @Override
